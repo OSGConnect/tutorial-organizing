@@ -1,4 +1,5 @@
 work.dag.*
 *.data
 report.txt
-logs/*
+logs/*.output
+logs/*.error
