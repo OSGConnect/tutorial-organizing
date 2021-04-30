@@ -1,6 +1,0 @@
-#!/bin/bash
-
-rm -f work.dag.* *.data report.txt logs/*
-
-connect shell rm -rf '/stash2/user/$USER/connect-client/tutorial-dagman-wordfreq'
-
