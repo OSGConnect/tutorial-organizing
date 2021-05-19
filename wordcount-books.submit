@@ -1,7 +1,7 @@
 executable = wordcount.py
 arguments = $(book)
 
-transfer_input_files    = inputs/$(book)
+transfer_input_files    = $(book)
 should_transfer_files   = Yes
 when_to_transfer_output = ON_EXIT
 
