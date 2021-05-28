@@ -36,11 +36,11 @@ Alice's Adventures in Wonderland book, the submit file would look like this:
 
 Let's remove the previous output we created and then submit this job: 
 
-	$ rm counts_Alices_Adventures_in_Wonderland_by_Lewis_Carroll.txt 
+	$ rm counts.Alices_Adventures_in_Wonderland_by_Lewis_Carroll.tsv
 	$ condor_submit wordcount-alice.submit
 
 You can check the job's progress using `condor_q`. Once it finishes, you should 
-see the same `counts_Alices_Adventures_in_Wonderland_by_Lewis_Carroll.txt` output. 
+see the same `counts.Alices_Adventures_in_Wonderland_by_Lewis_Carroll.tsv` output. 
 
 ## Analyzing Multiple Books
 
