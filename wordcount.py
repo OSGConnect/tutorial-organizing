@@ -21,7 +21,8 @@ for line in my_file:
             words[word] = 1
 my_file.close()
 
-output_filename = "counts_"+input_filename
+input_stem = input_filename.split('.')[0]
+output_filename = "counts."+input_stem+".tsv"
 sorted_words = sorted(words.items(), key=operator.itemgetter(1))
 my_file = open(output_filename, 'w')
 for word in sorted_words:
