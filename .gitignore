@@ -1,5 +1,0 @@
-work.dag.*
-*.data
-report.txt
-logs/*.output
-logs/*.error
