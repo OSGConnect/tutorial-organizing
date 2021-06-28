@@ -1,14 +1,12 @@
-proj_dir = 
-
 executable    = 
 arguments     = 
 
-transfer_input_files    = 
 initialdir    =
-
 output        = 
 error         = 
 log           = 
+
+transfer_input_files    = 
 
 should_transfer_files   = Yes
 when_to_transfer_output = ON_EXIT
