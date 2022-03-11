@@ -1,12 +1,14 @@
 executable    = 
 arguments     = 
 
-initialdir    =
-output        = 
-error         = 
-log           = 
-
 transfer_input_files    = 
+transfer_output_files   = 
+transfer_output_remaps  = 
+
+output        = job.$(ClusterID).$(ProcID).out
+error         = job.$(ClusterID).$(ProcID).err
+log           = job.$(ClusterID).$(ProcID).log
+
 
 should_transfer_files   = Yes
 when_to_transfer_output = ON_EXIT
