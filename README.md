@@ -1,7 +1,12 @@
-# Organizing Files
+# Organizing and Submitting HTC Workloads
 
 Imagine you have a collection of books, and you want to analyze how word
 usage varies from book to book or author to author. 
+
+This tutorial starts with the same set up as 
+our [Wordcount Tutorial for Submitting Multiple Jobs](https://support.opensciencegrid.org/support/solutions/articles/12000079856-wordcount-tutorial-for-submitting-multiple-jobs), but 
+focuses on how to organize that example more effectively on the Access Point, 
+with an eye to scaling up to a larger HTC workload in the future. 
 
 ## Our Workload
 
@@ -20,7 +25,7 @@ We want to run this script on all the books we have copies of.
 ## Make an Organization Plan
 
 Based on what you know about the script, inputs, and outputs, how would 
-you organize this HTC workload in folders? 
+you organize this HTC workload in directories (folders) on the access point? 
 
 Try making those changes before moving on to the next section of the tutorial. 
 
@@ -111,4 +116,4 @@ We can move the currently existing files ourselves:
 
 ## Submit Multiple Jobs
 
-> TO DO
+> TO DO, maybe refer to existing wordfreq tutorial? 
