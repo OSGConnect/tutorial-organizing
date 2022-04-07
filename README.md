@@ -15,7 +15,8 @@ name of the book we want to analyze:
 
 	$ ./wordcount.py Alice_in_Wonderland.txt 
 
-Try running the command to see what the output is for the script. 
+Try running the command to see what the output is for the script. Once you have done that
+delete the output file created (`rm counts.Alice_in_Wonderland.txt`).
 
 We want to run this script on all the books we have copies of. 
 
@@ -64,8 +65,8 @@ below and can be edited using the `nano` text editor:
 	arguments     = Alice_in_Wonderland.txt
 
 	transfer_input_files    = input/Alice_in_Wonderland.txt
-	transfer_output_files   = counts.Alice_in_Wonderland.tsv
-	transfer_output_remaps  = "counts.Alice_in_Wonderland.tsv=output/counts.Alice_in_Wonderland.tsv"
+	transfer_output_files   = counts.Alice_in_Wonderland.txt
+	transfer_output_remaps  = "counts.Alice_in_Wonderland.txt=output/counts.Alice_in_Wonderland.txt"
 
 Note that to tell HTCondor the location of the input file, we need to include 
 the input directory. We're also using a submit file option called 
@@ -86,7 +87,7 @@ Once the job finishes, we can check to see if it ran successfully and produced t
 we expect:
 
 	$ ls output/
-	counts.Alice_in_Wonderland.tsv
+	counts.Alice_in_Wonderland.txt
 
 This is good! It means our organizational system is working. 
 
@@ -98,21 +99,23 @@ These are the standard error, standard output and HTCondor log file. It would be
 a good idea to separate these into their own directory or directories so that we 
 still have them, but they aren't cluttering up our main directory. 
 
-First we have to create a folder for them:
+First we have to create directories for them:
 
-	$ mkdir logging
+	$ mkdir logs
+	$ mkdir errout
 
 Then, we have to edit the submit file lines that create these files, so that they 
 go into this new directory: 
 
 	$ nano books.submit
-	output        = logging/job.$(ClusterID).$(ProcID).out
-	error         = logging/job.$(ClusterID).$(ProcID).err
-	log           = logging/job.$(ClusterID).$(ProcID).log
+	output        = logs/job.$(ClusterID).$(ProcID).out
+	error         = errout/job.$(ClusterID).$(ProcID).err
+	log           = errout/job.$(ClusterID).$(ProcID).log
 
 We can move the currently existing files ourselves:
 
-	$ mv job.* logging/
+	$ mv job.*.log logs/
+	$ mv job.*.err job.*.out stderr
 
 ## Submit Multiple Jobs
 
