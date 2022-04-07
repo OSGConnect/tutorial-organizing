@@ -37,7 +37,7 @@ for most workloads is having a directory for your input files and a directory
 for your output files. We can set up this structure on the command line by running: 
 
 	$ mkdir input
-	$ mv *.txt intput/
+	$ mv *.txt input/
 	$ mkdir output/
 
 We can view our current directory and its subdirectories by using the recursive flag 
@@ -119,4 +119,34 @@ We can move the currently existing files ourselves:
 
 ## Submit Multiple Jobs
 
-> TO DO, maybe refer to existing wordfreq tutorial? 
+Finally, we are sufficiently organized to submit our whole workload
+
+First, we need to create a file with our input set -- in this case, it will be a list of the 
+book files we want to analyze. We can do this by using the shell's listing command `ls` and 
+redirecting the output to a file: 
+
+	$ cd input
+	$ ls > booklist.txt
+	$ cat booklist.txt
+	$ mv booklist.txt ..
+	$ cd ..
+
+Then, we modify our submit file to reference this input list and replace the static values 
+from our test job (`Alice_in_Wonderland.txt`) with a variable -- we've chosen `$(book)` below: 
+
+	$ nano books.submit
+
+	executable    = wordcount.py
+	arguments     = $(book)
+
+	transfer_input_files    = input/$(book)
+	transfer_output_files   = counts.$(book)
+	transfer_output_remaps  = "counts.$(book)=output/counts.$(book)"
+	
+	# other options
+	
+	queue book from booklist.txt
+
+Once this is done, you can submit the jobs as usual: 
+
+	$ condor_submit books.submit
