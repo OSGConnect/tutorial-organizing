@@ -52,6 +52,12 @@ with the `ls` command:
 
 	./output:
 
+We are also going to create directories for the HTCondor log files and the 
+standard error and standard output files (in one directory): 
+
+	$ mkdir logs
+	$ mkdir errout
+
 ## Submit One Job
 
 Now we want to submit a test job that uses this organizing scheme, using just 
@@ -73,6 +79,14 @@ the input directory. We're also using a submit file option called
 `transfer_output_remaps` that will essentially move the output file to our 
 `output/` directory by renaming or remapping it. 
 
+We also want to edit the submit file lines that tell the log, error and output 
+files where to go: 
+
+	$ nano books.submit
+	output        = logs/job.$(ClusterID).$(ProcID).out
+	error         = errout/job.$(ClusterID).$(ProcID).err
+	log           = errout/job.$(ClusterID).$(ProcID).log
+
 Once you've made the above changes to the `books.submit` file, you can submit it, 
 and monitor its progress: 
 
@@ -81,45 +95,9 @@ and monitor its progress:
 
 (Type `CTRL`-`C` to stop the `condor_watch_q` command.)
 
-## Organizing Files, Part II
-
-Once the job finishes, we can check to see if it ran successfully and produced the output
-we expect:
-
-	$ ls output/
-	counts.Alice_in_Wonderland.txt
-
-This is good! It means our organizational system is working. 
-
-Note that some additional files have been created in the main directory: 
-
-	$ ls
-
-These are the standard error, standard output and HTCondor log file. It would be 
-a good idea to separate these into their own directory or directories so that we 
-still have them, but they aren't cluttering up our main directory. 
-
-First we have to create directories for them:
-
-	$ mkdir logs
-	$ mkdir errout
-
-Then, we have to edit the submit file lines that create these files, so that they 
-go into this new directory: 
-
-	$ nano books.submit
-	output        = logs/job.$(ClusterID).$(ProcID).out
-	error         = errout/job.$(ClusterID).$(ProcID).err
-	log           = errout/job.$(ClusterID).$(ProcID).log
-
-We can move the currently existing files ourselves:
-
-	$ mv job.*.log logs/
-	$ mv job.*.err job.*.out stderr
-
 ## Submit Multiple Jobs
 
-Finally, we are sufficiently organized to submit our whole workload
+We are now sufficiently organized to submit our whole workload. 
 
 First, we need to create a file with our input set -- in this case, it will be a list of the 
 book files we want to analyze. We can do this by using the shell's listing command `ls` and 
