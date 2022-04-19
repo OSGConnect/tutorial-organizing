@@ -28,6 +28,9 @@ We want to run this script on all the books we have copies of.
 Based on what you know about the script, inputs, and outputs, how would 
 you organize this HTC workload in directories (folders) on the access point? 
 
+There will also be system and HTCondor files produced when we submit a job -- 
+how would you organize the log, standard error and standard output files? 
+
 Try making those changes before moving on to the next section of the tutorial. 
 
 ## Organize Files
