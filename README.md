@@ -1,3 +1,8 @@
+---
+ospool:
+    path: htc_workloads/submitting_workloads/tutorial-organizing/README.md
+---
+
 # Organizing and Submitting HTC Workloads
 
 Imagine you have a collection of books, and you want to analyze how word
